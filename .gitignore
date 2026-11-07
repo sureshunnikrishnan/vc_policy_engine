@@ -8,3 +8,4 @@ coverage
 !.env.example
 .bun
 *.tsbuildinfo
+docs
