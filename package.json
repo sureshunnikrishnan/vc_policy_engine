@@ -1,0 +1,16 @@
+{
+  "name": "vc-policy-engine",
+  "private": true,
+  "workspaces": ["packages/*"],
+  "scripts": {
+    "dev": "bun run --filter @vc-policy-engine/app start",
+    "start": "bun run --filter @vc-policy-engine/app start",
+    "test": "bun test",
+    "typecheck": "tsc --noEmit",
+    "typecheck:packages": "bun run --filter '*' typecheck"
+  },
+  "devDependencies": {
+    "@types/bun": "1.4.4",
+    "typescript": "7.0.2"
+  }
+}
