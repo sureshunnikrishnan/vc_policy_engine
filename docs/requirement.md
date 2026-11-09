@@ -1,1 +1,0 @@
-VC Policy Engine: A TypeScript library that evaluates credential-based access policies, supports multiple issuers, verifies revocation, and generates structured decision evidence. This could eventually integrate CEL or a compact domain-specific rules language.

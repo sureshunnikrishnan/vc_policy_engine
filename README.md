@@ -1,29 +1,37 @@
-# vc-policy-engine
+# VC Policy Engine
 
-Bun + TypeScript monorepo. **M0 complete** (scaffold). Next: [M1 offline evaluator](docs/implementation-guide.md#m1-offline-evaluator).
-
-## Docs
-
-- [Architecture](docs/architecture.md)
-- [Implementation guide](docs/implementation-guide.md) (M0–M5)
-- [ADRs](docs/adr/README.md)
+Open-core TypeScript engine that turns a verifiable presentation into a
+deterministic **PASS / FAIL / REVIEW** decision. Licensed under [Apache-2.0](LICENSE).
+Contributions require a [DCO sign-off](CONTRIBUTING.md).
 
 ## Packages
 
-- `@vc-policy-engine/core` — shared library
-- `@vc-policy-engine/app` — runnable app that depends on `core`
+| Package | Role |
+| --- | --- |
+| `@vc-policy-engine/core` | Domain types, typed errors, ports (crypto, keys, trust, status, storage, clock) |
+| `@vc-policy-engine/dummy` | CI-only package used to prove test-registry publish and provenance |
+| `@vc-policy-engine/app` | Placeholder application workspace |
+
+## Requirements
+
+- Node.js 22+
+- pnpm 9.15.4+ (`corepack enable`)
 
 ## Commands
 
 ```bash
-bun install
-bun run start
-bun test
-bun run typecheck
+pnpm install
+pnpm lint
+pnpm typecheck
+pnpm test
+pnpm build
 ```
 
-Run a script in one workspace:
+## Design
 
-```bash
-bun run --filter @vc-policy-engine/core test
-```
+Ports live in core. Adapters (HTTP, PostgreSQL, jose, KMS) must not be imported
+from core. Policy evaluation accepts **verified claims** only, never raw
+presentation or credential bytes.
+
+See [ROADMAP.md](ROADMAP.md), [docs/adr](docs/adr/README.md), and the documents
+in `docs/`.

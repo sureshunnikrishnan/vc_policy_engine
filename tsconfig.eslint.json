@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "composite": false,
+    "allowJs": true,
+    "paths": {
+      "@vc-policy-engine/core": ["./packages/core/src/index.ts"]
+    }
+  },
+  "include": [
+    "apps/**/*.ts",
+    "packages/**/*.ts",
+    "vitest.config.ts"
+  ]
+}

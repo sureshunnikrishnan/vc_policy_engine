@@ -1,16 +1,39 @@
 {
   "name": "vc-policy-engine",
+  "version": "0.0.0",
   "private": true,
-  "workspaces": ["packages/*"],
+  "type": "module",
+  "license": "Apache-2.0",
+  "packageManager": "pnpm@9.15.4",
+  "engines": {
+    "node": ">=22",
+    "pnpm": ">=9.15.4"
+  },
   "scripts": {
-    "dev": "bun run --filter @vc-policy-engine/app start",
-    "start": "bun run --filter @vc-policy-engine/app start",
-    "test": "bun test",
-    "typecheck": "tsc --noEmit",
-    "typecheck:packages": "bun run --filter '*' typecheck"
+    "start": "pnpm --filter @vc-policy-engine/app start",
+    "dev": "pnpm --filter @vc-policy-engine/app dev",
+    "build": "tsc -b",
+    "lint": "eslint .",
+    "typecheck": "tsc -b --pretty false",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "sbom": "node scripts/generate-sbom.mjs"
+  },
+  "pnpm": {
+    "overrides": {
+      "tinypool": "^2.1.2"
+    }
   },
   "devDependencies": {
-    "@types/bun": "1.4.4",
-    "typescript": "7.0.2"
+    "@changesets/cli": "^2.29.7",
+    "@eslint/js": "^9.38.0",
+    "@types/node": "^22.18.11",
+    "eslint": "^9.38.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.46.2",
+    "verdaccio": "^6.1.6",
+    "vitest": "^3.2.4"
   }
 }
